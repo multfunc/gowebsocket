@@ -407,7 +407,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: 'http://127.0.0.1:8080/user/sendMessageAll',
+                    url: 'http://127.0.0.1:8080/im/user/sendMessageAll',
                     data: {
                         appId: "101",
                         userId: person,
@@ -429,7 +429,7 @@
         function getUserList() {
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:8080/user/list",
+                url: "http://127.0.0.1:8080/im/user/list",
                 dataType: "json",
                 success: function(data) {
                     console.log("user list:" + data.code + "userList:" + data.data.userList);

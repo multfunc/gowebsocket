@@ -18,7 +18,7 @@ func Init(router *gin.Engine) {
 	router.LoadHTMLGlob("views/**/*")
 
 	// 用户组
-	userRouter := router.Group("/user")
+	userRouter := router.Group("/im/user")
 	{
 		userRouter.GET("/list", user.List)
 		userRouter.GET("/online", user.Online)
@@ -27,13 +27,13 @@ func Init(router *gin.Engine) {
 	}
 
 	// 系统
-	systemRouter := router.Group("/system")
+	systemRouter := router.Group("/im/system")
 	{
 		systemRouter.GET("/state", systems.Status)
 	}
 
 	// home
-	homeRouter := router.Group("/home")
+	homeRouter := router.Group("/im/home")
 	{
 		homeRouter.GET("/index", home.Index)
 	}

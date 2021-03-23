@@ -12,6 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"gowebsocket/lib/redislib"
+	"gowebsocket/models_x"
 	"gowebsocket/routers"
 	"gowebsocket/servers/grpcserver"
 	"gowebsocket/servers/task"
@@ -40,6 +41,8 @@ func main() {
 
 	// 服务注册
 	task.ServerInit()
+
+	models_x.InitIAccount()
 
 	go websocket.StartWebSocket()
 	// grpc
@@ -74,6 +77,7 @@ func initConfig() {
 
 	fmt.Println("config app:", viper.Get("app"))
 	fmt.Println("config redis:", viper.Get("redis"))
+	fmt.Println("config mysql:", viper.Get("mysql"))
 
 }
 
@@ -86,7 +90,7 @@ func open() {
 	time.Sleep(1000 * time.Millisecond)
 
 	httpUrl := viper.GetString("app.httpUrl")
-	httpUrl = "http://" + httpUrl + "/home/index"
+	httpUrl = "http://" + httpUrl + "/im/home/index"
 
 	fmt.Println("访问页面体验:", httpUrl)
 
